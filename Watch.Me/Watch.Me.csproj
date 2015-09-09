@@ -197,7 +197,9 @@
     <Compile Include="Models\Entities\TagLogs.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ViewModels\ApproveTagsPerVideo.cs" />
     <Compile Include="Models\ViewModels\ApproveVideoViewModel.cs" />
+    <Compile Include="Models\ViewModels\AvailableTags.cs" />
     <Compile Include="Models\ViewModels\CommentsPerVideo.cs" />
     <Compile Include="Models\ViewModels\DisplayedVideosViewModel.cs" />
     <Compile Include="Models\ViewModels\TagsPerVideo.cs" />
@@ -329,6 +331,7 @@
     <Content Include="Views\Admin\AdminHome.cshtml" />
     <Content Include="Views\Shared\_UploadForm.cshtml" />
     <Content Include="Views\AdminVideos\UnApprovedVideoes.cshtml" />
+    <Content Include="Views\AdminVideos\ApproveTag.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
