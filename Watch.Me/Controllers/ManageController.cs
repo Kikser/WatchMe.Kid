@@ -227,7 +227,8 @@ namespace Watch.Me.Controllers
                 {
                     await SignInAsync(user, isPersistent: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                return RedirectToAction("Index", "Home", new { area = "" });
+                //return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
             }
             AddErrors(result);
             return View(model);

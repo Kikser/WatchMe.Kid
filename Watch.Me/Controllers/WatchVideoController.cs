@@ -93,7 +93,46 @@ namespace Watch.Me.Controllers
             return View("~/Views/Home/WatchVideo.cshtml", result);
         }
 
+        public ActionResult MultipleVideoes(int searchType)
+        {
+            WatchVideoViewModel result = new WatchVideoViewModel();
 
+            if (searchType == 1)
+                result.SideVideos = _dbContext.Videos.Select(x => new EachVideoForSideVideoesViewModel()
+                {
+                    Id = x.Id,
+                    Url = x.Url,
+                    VideoTitle = x.VideoTitle,
+                    Tags = _dbContext.Tags.Where(tag => tag.Videos.Any(a => a.Id == x.Id && a.IsApproved)).Select(all => new TagsPerVideo()
+                    {
+                        IdTag = all.Id,
+                        TagDescription = all.Description
+                    }).ToList()
+                }).Take(10).ToList();
+
+
+            if (searchType == 2)
+            {
+                result.SideVideos = _dbContext.Videos.Select(x => new EachVideoForSideVideoesViewModel()
+                {
+                    Id = x.Id,
+                    Url = x.Url,
+                    VideoTitle = x.VideoTitle,
+                    DateCreate = x.DateCreated,
+                    Tags = _dbContext.Tags.Where(tag => tag.Videos.Any(a => a.Id == x.Id && a.IsApproved))
+                    .Select(all => new TagsPerVideo()
+                    {
+                        IdTag = all.Id,
+                        TagDescription = all.Description
+                    }).ToList()
+                }).OrderByDescending(o => o.DateCreate).Take(10).ToList();
+            }
+
+            return PartialView("~/Views/Home/_MultipleVideoesPartialView.cshtml", result);
+
+            //todo recomended videos
+            //todo add in post videoId
+        }
     }
 }
 

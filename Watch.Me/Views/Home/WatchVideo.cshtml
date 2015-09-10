@@ -12,8 +12,13 @@
     <div class="listi">
         <ul>
             <li class="active"><a href="#modern">Popular</a></li>
-            <li><a href="#oldSkool">Recommended</a></li>
+            <li><button id="test">"Popular"</button></li>
+            <li><button id="recentButton">Recent</button></li>
+            @*<li>@Html.ActionLink("Recomeneded", "MultipleVideoes", "WatchVideo", new { searchType = 1 }, null)</li>*@
             <li><a href="#oldSkool">Recently Uploaded</a></li>
+            @*<li class="active"><a href="#modern">Popular</a></li>
+            <li><a href="#oldSkool">Recommended</a></li>
+            <li><a href="#oldSkool">Recently Uploaded</a></li>*@
         </ul>
     </div>
     <div class='search'>
@@ -72,11 +77,18 @@
     </div>
 </div>
 
-<div class="wrapper_right_multiple">
-    <div class="wrapper_right_multiple_content">
+@*<div class="wrapper_right_multiple">
+    <div class="wrapper_right_multiple_content">*@
         @*@Html.Partial('_MultipleVideos')*@
 
-        @foreach (var item in Model.SideVideos)
+
+        <div id="renderPartial">
+            @Html.Partial("~/Views/Home/_MultipleVideoesPartialView.cshtml", Model)
+        </div>
+
+
+
+        @*@foreach (var item in Model.SideVideos)
         {
             <div class="one_video effect1 hidden">
                 <div data-aspect-ratio="16:9" class="moreVideo ">
@@ -97,7 +109,7 @@
                     </div>
                 </div>
             </div>
-        }
+        }*@
         
 
 
@@ -124,13 +136,43 @@
             </a>
 
 
-        </div>
-        </div>
+        @*</div>
+        </div>*@
    
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 <script src="~/Scripts/comments.js"></script>
-<script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('#test').click(function () {
+            $.ajax({
+                url: '/WatchVideo/MultipleVideoes',
+                data: { searchType: 1 },
+                dataType: 'html',
+                success: function (data) {
+                    $('#renderPartial').html(data);
+                }
+            });
+        });
+
+        $('#recentButton').click(function () {
+            $.ajax({
+                url: '/WatchVideo/MultipleVideoes',
+                data: { searchType: 2 },
+                dataType: 'html',
+                success: function (data) {
+                    $('#renderPartial').html(data);
+                }
+            });
+        });
+
+
+    });
+</script>
+
+@*<script>
     $(function() {
         $("#lik").click(function() {
             $("#lik,#likk").toggleClass("press", 1000);
@@ -156,4 +198,4 @@
         $('.hidden:lt(4)').removeClass('hidden');
         $('#show-more').on('click', showMore);
     });
-</script>
+</script>*@

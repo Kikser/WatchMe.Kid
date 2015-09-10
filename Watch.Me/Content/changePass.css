@@ -173,9 +173,6 @@ input:valid + label::after { content: ' ✓'; }
 
 
 
-body {
-  background: rgb(197, 25, 25);
-}
 
 div {
   display: block;
@@ -187,12 +184,6 @@ div {
   padding-top: 30px;
 }
 
-h1 {
-  font-family: 微軟正黑體;
-  font-weight: bold;
-  font-size: 30px;
-  margin-bottom: 15px;
-}
 
 .monkey {
   display: inline-block;

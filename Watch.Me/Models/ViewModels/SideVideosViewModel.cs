@@ -7,7 +7,7 @@ namespace Watch.Me.Models.ViewModels
 {
     public class SideVideosViewModel
     {
-        public List<EachVideoForSideVideoesViewModel> EachVideoForSideVideoes { get; set; } 
+        public List<EachVideoForSideVideoesViewModel> EachVideoForSideVideoes { get; set; }
     }
 
     public class EachVideoForSideVideoesViewModel
@@ -15,7 +15,8 @@ namespace Watch.Me.Models.ViewModels
         public int Id { get; set; }
         public string VideoTitle { get; set; }
         public string Url { get; set; }
+        public DateTime DateCreate { get; set; }
         public List<TagsPerVideo> Tags { get; set; }
     }
-    
+
 }
