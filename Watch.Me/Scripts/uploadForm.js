@@ -1,25 +1,38 @@
-﻿$(".icon-bg").click(function () {
-    $(".btn").toggleClass("active");
-    $(".icon-bg").toggleClass("active");
-    $(".upload_container").toggleClass("active");
-    $(".box-upload").toggleClass("active");
-    $(".box-caption").toggleClass("active");
-    $(".box-tags").toggleClass("active");
-    $(".private").toggleClass("active");
-    $(".set-time-limit").toggleClass("active");
-    $(".button").toggleClass("active");
+﻿$(document).ready(function () {
+    $(".icon-bg").click(function (e) {
+        ShowDialog(false);
+        e.preventDefault();
+    });
+
+    $("#btnClose").click(function (e) {
+        HideDialog();
+        e.preventDefault();
+    });
+
+    //$("#btnSubmit").click(function (e) {
+    //    var brand = $("#brands input:radio:checked").val();
+    //    $("#output").html("<b>Your favorite mobile brand: </b>" + brand);
+    //    HideDialog();
+    //    e.preventDefault();
+    //});
+
 });
 
-$(".button").click(function () {
-    $(".button-overlay").toggleClass("active");
-});
+function ShowDialog(modal) {
+    $("#overlay").show();
+    $("#dialog").fadeIn(700);
 
-$(".iconmelon").click(function () {
-    $(".box-upload-ing").toggleClass("active");
-    $(".iconmelon-loaded").toggleClass("active");
-});
+    if (modal) {
+        $("#overlay").unbind("click");
+    }
+    else {
+        $("#overlay").click(function (e) {
+            HideDialog();
+        });
+    }
+}
 
-$(".private").click(function () {
-    $(".private-overlay").addClass("active");
-    $(".private-overlay-wave").addClass("active");
-});
+function HideDialog() {
+    $("#overlay").hide();
+    $("#dialog").fadeOut(700);
+}

@@ -10,6 +10,9 @@
     top: 35%;
     left: 3%;
 }
+.logo img {
+    width:80%;
+}
 
 .top_menu {
     width: 70%;

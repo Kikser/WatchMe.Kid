@@ -7,6 +7,76 @@
   font-family: "latoheavy";
   src: url('https://dl.dropboxusercontent.com/u/47663272/upload-module-wireframe/Lato-Heavy.ttf') format("truetype")
 }
+.web_dialog_overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: auto;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #000000;
+    opacity: .60;
+    filter: alpha(opacity=15);
+    -moz-opacity: .15;
+    z-index: 101;
+    display: none;
+}
+
+.web_dialog {
+    display: none;
+    position: fixed;
+    width: 570px;
+    height: 500px;
+    top: 25%;
+    left: 50%;
+    margin-left: -290px;
+    margin-top: -96px;
+    padding: 0px;
+    z-index: 102;
+    font-family: Verdana;
+    font-size: 10pt;
+    overflow-x: hidden;
+    background: linear-gradient(to bottom, rgba(92, 190, 109, 1) 0%,rgba(97, 210, 214, 1) 100%);
+}
+
+.web_dialog_title {
+    /*border-bottom: solid 2px #60CCB3;
+    background-color: #60CCB3;*/
+    padding: 4px;
+    color: White;
+    font-weight: bold;
+}
+
+    .web_dialog_title a {
+        color: White;
+        text-decoration: none;
+    }
+
+.align_right {
+    text-align: right;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
+    width: 100px;
+}
+
+    .fileUpload input#imgInp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
 
 
 .black_overlay{
