@@ -24,7 +24,8 @@ namespace Watch.Me.Models.ViewModels
         //Comments
         public List<CommentsPerVideo> Comments { get; set; }
         public List<TagsPerVideo> Tags { get; set; }
- 
+
+        public List<EachVideoForSideVideoesViewModel> SideVideos { get; set; } 
         
     }
 }

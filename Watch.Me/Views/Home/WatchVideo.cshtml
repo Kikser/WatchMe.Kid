@@ -75,17 +75,37 @@
 <div class="wrapper_right_multiple">
     <div class="wrapper_right_multiple_content">
         @*@Html.Partial('_MultipleVideos')*@
-        <div class="one_video effect1 hidden">
-            <div data-aspect-ratio="16:9" class="moreVideo ">
-                <iframe id="ytplayer" type="text/html" src="http://files.simey.me/html5-vids/trailer.ogv" type="video/ogg" frameborder="0" autoplay="false"></iframe>
-            </div>
-            <div class="info_video">
-                <div id="title"><h3>Kikser</h3></div>
-                <div id="tag_video"><p>Tom and Jerry</p></div>
-            </div>
-        </div>
-        <div class="one_video effect1 hidden">
+
+        @foreach (var item in Model.SideVideos)
+        {
             <div class="one_video effect1 hidden">
+                <div data-aspect-ratio="16:9" class="moreVideo ">
+                    <iframe id="ytplayer" type="text/html" src="@item.Url"
+                            frameborder="0" autoplay="false"></iframe>
+                </div>
+                <div class="info_video">
+                    <div id="title">
+                        <div id="title_frame"></div>
+                        <h3>@Html.ActionLink(@item.VideoTitle, "Index", "WatchVideo", new { videoId = item.Id }, new { @class = "navbar-brand" })</h3>
+                    </div>
+                    <div id="tag_video">
+                        @foreach (var tag in item.Tags)
+                        {
+                            <p>@tag.TagDescription</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+        
+
+
+
+            @*@Html.ActionLink(@item.VideoTitle, "Index", "WatchVideo", new { videoId = item.Id }, new { @class = "navbar-brand" })*@
+
+
+
+            @*<div class="one_video effect1 hidden">
                 <div data-aspect-ratio="16:9" class="moreVideo ">
                     <iframe id="ytplayer" type="text/html" src="http://files.simey.me/html5-vids/trailer.ogv" type="video/ogg" frameborder="0" autoplay="false"></iframe>
                 </div>
@@ -93,55 +113,17 @@
                     <div id="title"><h3>Kikser</h3></div>
                     <div id="tag_video"><p>Tom and Jerry</p></div>
                 </div>
-            </div>
-            
-        </div>
-        <div class="one_video effect1 hidden">
-            <div data-aspect-ratio="16:9" class="moreVideo ">
-                <iframe id="ytplayer" type="text/html" src="http://files.simey.me/html5-vids/trailer.ogv" type="video/ogg" frameborder="0" autoplay="false"></iframe>
-            </div>
-            <div class="info_video">
-                <div id="title"><h3>Kikser</h3></div>
-                <div id="tag_video"><p>Tom and Jerry</p></div>
-            </div>
-        </div>
-        <div class="one_video effect1 hidden">
-            <div data-aspect-ratio="16:9" class="moreVideo ">
-                <iframe id="ytplayer" type="text/html" src="http://files.simey.me/html5-vids/trailer.ogv" type="video/ogg" frameborder="0" autoplay="false"></iframe>
-            </div>
-            <div class="info_video">
-                <div id="title"><h3>Kikser</h3></div>
-                <div id="tag_video"><p>Tom and Jerry</p></div>
-            </div>
-        </div>
-        <div class="one_video effect1 hidden">
-            <div data-aspect-ratio="16:9" class="moreVideo ">
-                <iframe id="ytplayer" type="text/html" src="http://files.simey.me/html5-vids/trailer.ogv" type="video/ogg" frameborder="0" autoplay="false"></iframe>
-            </div>
-            <div class="info_video">
-                <div id="title"><h3>Kikser</h3></div>
-                <div id="tag_video"><p>Tom and Jerry</p></div>
-            </div>
-        </div>
-        <div class="one_video effect1 hidden">
-            <div data-aspect-ratio="16:9" class="moreVideo ">
-                <iframe id="ytplayer" type="text/html" src="http://files.simey.me/html5-vids/trailer.ogv" type="video/ogg" frameborder="0" autoplay="false"></iframe>
-            </div>
-            <div class="info_video">
-                <div id="title"><h3>Kikser</h3></div>
-                <div id="tag_video"><p>Tom and Jerry</p></div>
-            </div>
-        </div>
+            </div>*@
 
 
-        
-        
+
+
             <a href="#" id="show-more">
                 <div class="arrow bounce"> </div>
             </a>
-       
-      
-    </div>
+
+
+        </div>
         </div>
    
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

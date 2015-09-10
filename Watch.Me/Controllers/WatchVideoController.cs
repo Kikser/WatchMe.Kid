@@ -48,6 +48,21 @@ namespace Watch.Me.Controllers
                         NumberOfLikes = x.Count(c => c.Love),
                         NumberOfDislikes = x.Count(d => d.Dislike != null)
                     }).FirstOrDefault();
+            
+            
+            var mostLikedVideosList = _dbContext.Videos.Select(x => new EachVideoForSideVideoesViewModel()
+            {
+                Id = x.Id,
+                Url = x.Url,
+                VideoTitle = x.VideoTitle,
+                Tags = _dbContext.Tags.Where(tag => tag.Videos.Any(a => a.Id == x.Id)).Select(all => new TagsPerVideo()
+                {
+                    IdTag = all.Id,
+                    TagDescription = all.Description
+                }).ToList()
+            }).Take(10).ToList();
+            
+            
 
 
                 result = new WatchVideoViewModel()
@@ -59,7 +74,8 @@ namespace Watch.Me.Controllers
                     ApplicationUserId = video.ApplicationUser.Id,
                     UserName = video.ApplicationUser.UserName,
                     Comments = comments,
-                    Tags = tags
+                    Tags = tags,
+                    SideVideos = mostLikedVideosList
                 };
 
 
@@ -76,6 +92,8 @@ namespace Watch.Me.Controllers
             
             return View("~/Views/Home/WatchVideo.cshtml", result);
         }
+
+
     }
 }
 
