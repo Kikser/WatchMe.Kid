@@ -35,7 +35,7 @@
         <div class="video_title">
             <h3>@Model.VideoTitle</h3> @*--------- > tuka treba da se zeme id od title na videoto i da se prikaze*@
             <p>
-                Tags are here:
+                @*Tags are here:*@
                 @foreach (var item in Model.Tags)
                 {
                     <label>@item.TagDescription</label>
@@ -85,8 +85,9 @@
                 </div>
                 <div class="info_video">
                     <div id="title">
-                        <div id="title_frame"></div>
-                        <h3>@Html.ActionLink(@item.VideoTitle, "Index", "WatchVideo", new { videoId = item.Id }, new { @class = "navbar-brand" })</h3>
+                        <div id="title_frame">
+                            <h3>@Html.ActionLink(@item.VideoTitle, "Index", "WatchVideo", new { videoId = item.Id }, new { @class = "navbar-brand", @id="litle_title" })</h3>
+                        </div>
                     </div>
                     <div id="tag_video">
                         @foreach (var tag in item.Tags)

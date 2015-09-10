@@ -23,21 +23,29 @@
 .info_video {
     width:50%;
     float: right;
-        padding: 5%;
+    padding-left: 5%;
 }
 #title {
     width: 100%;
     text-align: justify;
     height: 25px;
     /* float: left; */
-    margin-top: 30%;
+    /*margin-top: 30%;*/
     margin-bottom:5%;
 
 }
 #tag_video {
     width:100%;
+    height: 70px;
+}
+#litle_title {
+    
+    display: block;
+   font-size: 30px;
+    color: #2980B9;
+    width: 100%;
     text-align: justify;
-    height: 25px;
+    font-family: Gabriola;
 }
 .one_video {
         width: 100%;
@@ -117,7 +125,11 @@
   -webkit-animation: bounce 2s infinite;
   animation: bounce 2s infinite;
 }
-#title h3 {
+#title_frame {
+    width:100%;
+    height:40px;
+}
+#title_frame h3 {
     display: block;
     margin-bottom: 5px;
     font-size: 30px;
@@ -130,6 +142,6 @@
     font-family: Gabriola;
     font-size: 15px;
     font-weight: bold;
-    color: #7a3e1a;
+    color: #2980B9;
     text-align: justify;
 }
