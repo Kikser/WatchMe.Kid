@@ -7,6 +7,7 @@
 <link href="~/Content/video.css" rel="stylesheet" />
 <link href="~/Content/search.css" rel="stylesheet" />
 <link href="~/Content/comments.css" rel="stylesheet" />
+<link href="~/Content/multiPlayers.css" rel="stylesheet" />
 <div class="sub_nav">
     <div class="listi">
         <ul>
@@ -30,17 +31,6 @@
         <iframe frameborder="0" src="@Model.Url"></iframe>
     </div>
 
-   
-
-    @*<video id="video" class="big-flat-video" controls="controls">
-        <source src="http://www.quirksmode.org/html5/videos/big_buck_bunny.mp4" type="video/mp4">
-        <source src="http://www.quirksmode.org/html5/videos/big_buck_bunny.webm" type="video/webm">
-        <source src="http://www.quirksmode.org/html5/videos/big_buck_bunny.ogv" type="video/ogg">
-    </video>*@
-
-
-
-
     <div class="video_stuff">
         <div class="video_title">
             <h3>@Model.VideoTitle</h3> @*--------- > tuka treba da se zeme id od title na videoto i da se prikaze*@
@@ -52,30 +42,59 @@
                 }
             </p>
         </div>
-        <div class="buttons">
-            <a href="#"><img src="~/images/like.png" id="like"/></a>
-            <a href="#"><img src="~/images/dislike.png" id="dislike"/></a>
+        <div class="like">
+            <i id="lik"></i>
+            <span id="likk">liked!</span>
+            
+            @Model.NumberLike
         </div>
-        <div>
-            Likes: @Model.NumberLike
-            Dislikes: @Model.NumberDislike
+        <div class="dislike">
+            <i id="dis"></i>
+            <span id="diss">disliked!</span>
+            @Model.NumberDislike
         </div>
+        <button class='bubble'>
+            <p>Add Comment</p>
+        </button>
     </div>
 
     <div class='comments'>
         <div class='loader'></div>
         <div class='inner'>
             <div class='add-new'>
-                <input class='input your-name' placeholder='Type your name here...' type='text'>
                 <textarea class='input your-msg' placeholder='Type your comment here...'></textarea>
-                <button class='send-msg bubble'>
-                    <p>Comment</p></button>
+                <button class='send-msg send'>
+                    <p>Send</p>
+                </button>
             </div>
+           
         </div>
     </div>
 </div>
 
-<div class="wrapper_right_multipl"></div>
+<div class="wrapper_right_multiple">
+    <div class="wrapper_right_multiple_content">
+            @*@Html.Partial('_MultipleVideos')*@
+            </div>
+        </div>
+   
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 <script src="~/Scripts/comments.js"></script>
+<script>
+    $(function() {
+        $("#lik").click(function() {
+            $("#lik,#likk").toggleClass("press", 1000);
+        });
+        $("#dis").click(function() {
+            $("#dis,#diss").toggleClass("press", 1000);
+        });
+    });
+</script>
+<script>
+    $('.bubble').click(function () {
+        $('.comments').slideToggle('slow');
+            return false;
+      });
+
+</script>
