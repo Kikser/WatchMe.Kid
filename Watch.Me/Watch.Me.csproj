@@ -335,6 +335,7 @@
     <Content Include="Views\Shared\_UploadForm.cshtml" />
     <Content Include="Views\AdminVideos\UnApprovedVideoes.cshtml" />
     <Content Include="Views\AdminVideos\ApproveTag.cshtml" />
+    <Content Include="Views\Shared\_MultipleVideos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
