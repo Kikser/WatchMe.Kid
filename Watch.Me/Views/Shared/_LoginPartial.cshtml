@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
+
 <link href="~/Content/userForm.css" rel="stylesheet" />
 <link href="~/Content/uploadContainer.css" rel="stylesheet" />
 @if (Request.IsAuthenticated)
@@ -7,7 +8,7 @@
     {
         @Html.AntiForgeryToken()
 
-
+       
         <div class="mobile-wrap">
             <div class="mobile clearfix">
                 <div class="header">
@@ -21,7 +22,7 @@
                         <div class="top-head">
 
                             <img class="profilepic" src="#"/>
-
+                            
                             <div class="email">@Html.ActionLink( User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new {title = "Manage"})</div>
 
                         </div>

@@ -16,7 +16,7 @@ namespace Watch.Me.Controllers
     public class AccountController : Controller
     {
         private ApplicationUserManager _userManager;
-
+        private readonly ApplicationDbContext _dbContext = new ApplicationDbContext();
         public AccountController()
         {
         }
@@ -151,10 +151,24 @@ namespace Watch.Me.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
-        {
+        {            
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
+
+                if (model.Male)
+                {
+                    user.PictureId = 1;
+                    user.Gender = true;
+                }
+                else
+                {
+                    user.PictureId = 2;
+                    user.Gender = false;
+                }
+
+
+                
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -435,7 +449,22 @@ namespace Watch.Me.Controllers
             return View();
         }
 
+        //[ChildActionOnly]
+        //public PartialViewResult GetUserInfo()
+        //{
+        //    if (User.Identity.IsAuthenticated)
+        //    {
+        //        var id = User.Identity.GetUserId();
 
+        //        var firstOrDefault = _dbContext.Users.FirstOrDefault(x => x.Id == id);
+        //        if (firstOrDefault != null)
+        //        {
+        //            var picture = _dbContext.UserPictures.FirstOrDefault(x => x.Id == firstOrDefault.PictureId).PictureUrl;
+        //            return PartialView("_LoginPartial", picture);
+        //        }
+        //    }
+        //    return PartialView("_LoginPartial");
+        //}
 
         #region Helpers
         // Used for XSRF protection when adding external logins

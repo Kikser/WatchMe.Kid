@@ -22,10 +22,12 @@
                     @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                     @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label", @id = "label" })
                     @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                    @Html.Label("male", "Male")
-                    @*@Html.RadioButtonFor(m => m.isFemale, "false", new{id = "male"})*@
-                    @Html.Label("female", "Female")
-                    @*@Html.RadioButtonFor(m => m.isFemale, "true", new{id = "female"})*@
+
+                    @Html.LabelFor(m => m.Male, new { @class = "col-md-2 control-label", @id = "label" })
+                    @Html.RadioButtonFor(model => model.Gender, true, new { @class = "form-control" })
+
+                    @Html.LabelFor(m => m.Female, new { @class = "col-md-2 control-label", @id = "label" })
+                    @Html.RadioButtonFor(m => m.Gender,true, new { @class = "form-control" })
                     <input type="submit" class="button" value="Register" />
 
 

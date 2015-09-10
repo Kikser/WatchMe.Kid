@@ -244,7 +244,9 @@
     <Content Include="images\bg.png" />
     <Content Include="images\dislike.png" />
     <Content Include="images\fade.png" />
+    <Content Include="images\female_carton.jpg" />
     <Content Include="images\like.png" />
+    <Content Include="images\male_cartoon.jpg" />
     <Content Include="images\monk.png" />
     <Content Include="images\sad.png" />
     <Content Include="images\sadd.png" />
@@ -336,6 +338,7 @@
     <Content Include="Views\AdminVideos\UnApprovedVideoes.cshtml" />
     <Content Include="Views\AdminVideos\ApproveTag.cshtml" />
     <Content Include="Views\Shared\_MultipleVideos.cshtml" />
+    <Content Include="Views\Account\GetUserPicture.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
