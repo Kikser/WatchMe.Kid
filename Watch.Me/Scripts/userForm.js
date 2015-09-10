@@ -13,7 +13,7 @@ var App = {
             this.toggle(), this.navigation()
         },
         toggle: function () {
-            $(".title").on("touchstart click", function (e) {
+            $(".ion-ios-navicon").on("touchstart click", function (e) {
                 e.preventDefault(), $(".sidebar").toggleClass("active"), $(".nav").removeClass("active"), $(".sidebar .sidebar-overlay").removeClass("fadeOut animated").addClass("fadeIn animated")
             }), $(".sidebar .sidebar-overlay").on("touchstart click", function (e) {
                 e.preventDefault(), $(".ion-ios-navicon").click(), $(this).removeClass("fadeIn").addClass("fadeOut")

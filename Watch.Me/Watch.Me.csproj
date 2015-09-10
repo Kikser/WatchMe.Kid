@@ -227,6 +227,7 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\login.css" />
+    <Content Include="Content\multiPlayers.css" />
     <Content Include="Content\nav.css" />
     <Content Include="Content\register.css" />
     <Content Include="Content\search.css" />
@@ -245,6 +246,8 @@
     <Content Include="images\fade.png" />
     <Content Include="images\like.png" />
     <Content Include="images\monk.png" />
+    <Content Include="images\sad.png" />
+    <Content Include="images\sadd.png" />
     <Content Include="images\srch.png" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -332,6 +335,7 @@
     <Content Include="Views\Shared\_UploadForm.cshtml" />
     <Content Include="Views\AdminVideos\UnApprovedVideoes.cshtml" />
     <Content Include="Views\AdminVideos\ApproveTag.cshtml" />
+    <Content Include="Views\Shared\_MultipleVideos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
