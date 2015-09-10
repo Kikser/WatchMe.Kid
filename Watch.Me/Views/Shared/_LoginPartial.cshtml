@@ -5,78 +5,87 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
-
- 
-    <div class="mobile-wrap">
-        <div class="mobile clearfix">
-            <div class="header">
-                <span class="ion-ios-navicon pull-left"><i></i></span>
-                <span class="title">@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</span>
-            </div>
-
-            <div class="sidebar">
-                <div class="sidebar-overlay"></div>
-                <div class="sidebar-content">
-                    <div class="top-head">
-
-                        <img class="profilepic" src="#"> @*tuka treba da se vlece slikata od baza*@
-                        <div class="name">@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new {title = "Manage"})</div>
+        @Html.AntiForgeryToken()
 
 
-                    </div>
-                    <div class="nav-left">
-                        <div class="btn"></div>
-                        <div class="icon-bg">
-                            <div class="icon"></div>
+        <div class="mobile-wrap">
+            <div class="mobile clearfix">
+                <div class="header">
+                    <span class="ion-ios-navicon pull-left"><i></i></span>
+                    <span class="title">@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new {title = "Manage"})</span>
+                </div>
+
+                <div class="sidebar">
+                    <div class="sidebar-overlay"></div>
+                    <div class="sidebar-content">
+                        <div class="top-head">
+
+                            <img class="profilepic" src="#"/>
+
+                            <div class="email">@Html.ActionLink( User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new {title = "Manage"})</div>
+
                         </div>
-                       
-                        <a href="#settings"><span class="ion-ios-gear-outline"></span> Settings</a>
+                        <div class="nav-left">
+                            <div class="btn"></div>
+                            <div class="icon-bg">
+                                <div class="icon">@Html.ActionLink(".", "_UploadForm", new { @id = "label" })</div>
+                            </div>
+
+                        </div>
+                        <div class="logout">
+                            <a href="javascript:document.getElementById('logoutForm').submit()">Log Off</a>
+                        </div>
                     </div>
-                    <div class="logout">
-                        <label class="logoff_btn">
-                            <input type="checkbox">
-                            <span></span>
-                            <span><a href="javascript:document.getElementById('logoutForm').submit()"></a></span>
-                        </label>
-                        
+
+                </div>
+                <div class="content">
+
+                    <div class="html welcome visible">
+                    </div>
+                    <div class="html alarm">
+                    </div>
+                    <div class="alarm-list">
+                    </div>
+                    <div class="html compose">
+                    </div>
+                    <div class="html chats">
+                    </div>
+                    <div class="html settings">
+                    </div>
+                    <div class="html profile">
+                    </div>
+                    <div class="html credits">
                     </div>
                 </div>
 
-            </div>
-           
-            <div class="content">
-
-                <div class="html welcome visible">
-                </div>
-                <div class="html alarm">
-                </div>
-                <div class="alarm-list">
-                </div>
-                <div class="html compose">
-                </div>
-                <div class="html chats">
-                </div>
-                <div class="html settings">
-                </div>
-                <div class="html profile">
-                </div>
-                <div class="html credits">
-                </div>
             </div>
 
         </div>
-
-    </div>
-
+    
     }
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-       <li>@Html.ActionLink("Sign Up", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Sign In", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+
+    <div class="in_out">
+        <div class="login-button">
+            <div class="arrow">
+                <i class="fa fa-arrow-right"></i>
+            </div>
+            <div class="login">
+                <span>@Html.ActionLink("Sign Up", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</span>
+            </div>
+        </div>
+        <div class="login-button">
+            <div class="arrow">
+                <i class="fa fa-arrow-right"></i>
+            </div>
+            <div class="login">
+                <span>@Html.ActionLink("Sign In", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</span>
+            </div>
+        </div>
+    </div>
+
 }
 
 @Html.Partial("_UploadForm")
