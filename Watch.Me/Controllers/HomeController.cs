@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using Watch.Me.Models;
+using Watch.Me.Models.Entities;
 using Watch.Me.Models.ViewModels;
 
 namespace Watch.Me.Controllers
@@ -104,12 +105,25 @@ namespace Watch.Me.Controllers
                     }).ToList();
 
 
+                //all avaiable tags used in video upload
+                var availableTags = _dbContext.Tags.GroupBy(g => g.Description)
+                    .Select(s => new AvailableTags()
+                    {
+                        TagDescription = s.FirstOrDefault().Description,
+                        TagId = s.FirstOrDefault().Id
+                    }).ToList();
+
+
+               // var userPicture = _dbContext.Users.FirstOrDefault(x => x.Id == userId && x.UserPictures. == x.UserPictures.Id).UserPictures.PictureUrl;
+
                 var allVideos = new DisplayedVideosViewModel()
                 {
                     PopularVideos = mostLikeVideoList,
                     RecentVideos = recentThreeVideos,
                     ReccomendedVideos = recommendVidoes,
-                    LoggedUser = true
+                    LoggedUser = true,
+                    AvailableTags = availableTags,
+                    
                 };
                 return View(allVideos);
             }
@@ -140,11 +154,48 @@ namespace Watch.Me.Controllers
             return View();
         }
 
-        //public ActionResult WatchVideo(int videoId)
-        //{
-        //    return View();
-        //}
 
-        
+        [HttpPost]
+        public ActionResult PostAVideo(string videoTitle, string videoUrl, string[] selectedTags)
+        {
+            //each video has many tags 
+            var tags = new List<Tag>();
+            //in order withs to be embeded in the player
+            var embededString = videoUrl.Replace("watch?v=", "embed/");
+
+
+            using (_dbContext)
+            {
+                foreach (string element in selectedTags)
+                {
+                    var currentElement = Int32.Parse(element);
+                    var tempTag = _dbContext.Tags.Find(currentElement);
+                    tags.Add(tempTag);
+                }
+
+                string currentUserId = User.Identity.GetUserId();
+                var video = new Video()
+                {
+                    VideoTitle = videoTitle,
+                    Url = embededString,
+                    IsApproved = false,
+                    DateCreated = DateTime.Now,
+                    ApplicationUser = _dbContext.Users.FirstOrDefault(x => x.Id == currentUserId),
+                    Tags = tags
+                };
+
+                _dbContext.Videos.Add(video);
+                _dbContext.SaveChanges();
+
+            }
+            
+
+            return Json(new { success = true, responseText = "The video has been uploaded" }, JsonRequestBehavior.AllowGet);
+        }
     }
+
+
+
+
+
 }

@@ -7,7 +7,8 @@ namespace Watch.Me.Models.ViewModels
 {
     public class AvailableTags
     {
-        public int VideoId { get; set; }
+        public int TagId { get; set; }
+        public string TagDescription { get; set; }
 
     }
 }

@@ -9,12 +9,15 @@
 <link href="~/Content/video.css" rel="stylesheet" />
 <link href="~/Content/search.css" rel="stylesheet" />
 <link href="~/Content/slider.css" rel="stylesheet" />
+<link href="~/Content/navAnimate.css" rel="stylesheet" />
 <div id="userForm">
     @if (Request.IsAuthenticated)
     {
         using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm", @class = "navbar-right"}))
         {
             @Html.AntiForgeryToken()
+        
+        
             <div class="mobile-wrap">
                 <div class="mobile clearfix">
                     <div class="header">
@@ -76,63 +79,67 @@
     }
     else
     {
+        <ul id="navigation">
+            <li class="home">@Html.ActionLink("Sign Up", "Register", "Account", routeValues: null, htmlAttributes: new {id = "registerLink"})</li>
+            <li class="about"><span>@Html.ActionLink("Sign In", "Login", "Account", routeValues: null, htmlAttributes: new {id = "loginLink"})</span></li>
 
-        <div class="in_out">
-            <div class="login-button">
-                <div class="arrow">
-                    <i class="fa fa-arrow-right"></i>
-                </div>
-                <div class="login">
-                    <span>@Html.ActionLink("Sign Up", "Register", "Account", routeValues: null, htmlAttributes: new {id = "registerLink"})</span>
-                </div>
-            </div>
-            <div class="login-button">
-                <div class="arrow">
-                    <i class="fa fa-arrow-right"></i>
-                </div>
-                <div class="login">
-                    <span>@Html.ActionLink("Sign In", "Login", "Account", routeValues: null, htmlAttributes: new {id = "loginLink"})</span>
-                </div>
-            </div>
-        </div>
-
+        </ul>
     }
 
 
-
-    @*@Html.Partial("_LoginPartial")*@
 </div>
+
 <div id="overlay" class="web_dialog_overlay"></div>
-<div id="dialog" class="web_dialog">
-    <table style="width: 100%; border: 0px;" cellpadding="3" cellspacing="0">
-        <tr>
 
-            <td class="web_dialog_title align_right">
-                <a href="#" id="btnClose">Close</a>
-            </td>
-        </tr>
 
-    </table>
-</div>
+@if (Model.LoggedUser)
+{
+    <div id="dialog" class="web_dialog">
+        <table style="width: 100%; border: 0px;" cellpadding="3" cellspacing="0">
+            <tr>
+                <td class="web_dialog_title align_right">
+                    <a href="#" id="btnClose">Close</a>
+                </td>
+            </tr>
+        </table>
 
-@*<div class="sub_nav">
-    <div class="listi">
-        <ul>
-            <li class="active"><a href="#modern">Popular</a></li>
-            <li><a href="#oldSkool">Recommended</a></li>
-            <li><a href="#oldSkool">Recently Uploaded</a></li>
-        </ul>
+        <form id="insertVideo">
+
+            <div>
+                <h2>Title</h2>
+            </div>
+            <div>
+                <input type="text" id="videoTitle" name="videoTitle" style="background-color: white" required>
+            </div>
+
+            <div style="padding-top: 50px;">
+                <h2>Url</h2>
+            </div>
+
+            <div>
+                <input type="text" id="videoUrl" name="videoUrl" style="background-color: white" required>
+            </div>
+
+            <div style="padding-top: 30px;">
+                @foreach (var tag in Model.AvailableTags)
+                {
+                    <p>
+                        <input type="checkbox" id="@tag.TagId" class="k-checkbox">
+                        <label class="k-checkbox-label" for="@tag.TagId">@tag.TagDescription</label>
+                    </p>
+                }
+            </div>
+
+            <div style="padding-top: 10px;">
+                <input type="button" id="confirmButton" value="Post the video" />
+            </div>
+        </form>
 
     </div>
-    <div class='search'>
-        <div class='search-container'>
-            <input placeholder='search' type='text'>
-            <a class='button'>
-                <i class='icon-search'></i>
-            </a>
-        </div>
-    </div>
-</div>*@
+}
+
+
+
 
 
 <div class="content">
@@ -198,6 +205,7 @@
 <script src="~/Scripts/slider.js"></script>
 <script src="~/Scripts/userForm.js"></script>
 <script src="~/Scripts/uploadForm.js"></script>
+<script src="~/Scripts/navAnimate.js"></script>
 @*<script src="~/Scripts/video.js"></script>*@
 <style>
     #redirect {
@@ -206,3 +214,67 @@
     }
 </style>
 
+<script>
+    $("document").ready(function () {
+
+        $("#confirmButton").click(function () {
+
+            var selectedTags = [];
+            $("input:checkbox").each(function () {
+                var $this = $(this);
+                if ($this.is(":checked")) {
+                    selectedTags.push($this.attr("id"));
+                } 
+            });
+
+            var title = $("#videoTitle").val();
+            var url = $("#videoUrl").val();
+
+            var subString = url.indexOf("watch?v=") > -1;
+            
+            if (subString) {
+                if (selectedTags.length === 0) {
+                    alert("At least one tag should be selected");
+                }
+                else {
+                    //ajax post call to controller 
+                    $.ajax({
+                        type: "POST",
+                        data: {
+                            videoTitle: title,
+                            videoUrl: url,
+                            selectedTags: selectedTags
+                        },
+                        traditional: true,
+                        url: "Home/PostAVideo",
+                        dataType: 'json',
+                        success: function (response) {
+                            if (response != null && response.success) {
+                                alert('The video has been uploaded');
+                                resetFields();         //kristijan na success da se zatovri formata :) tuka dodadi nekakov javascript. $("#divot).close ?!?
+
+                            } else {
+                                alert(response);
+                            }
+                        },
+                        error: function (response) {
+                            alert("error!");  // 
+                        }
+                    });
+                }
+            } else {
+                alert("This is not a valid Url. You are allowed to use only youtube's links");
+            }
+            
+            
+            
+
+            
+        });
+    });
+
+    function resetFields() {
+        $("#videoTitle").val('');
+        $("#videoUrl").val('');
+    }
+</script>

@@ -158,12 +158,12 @@ namespace Watch.Me.Controllers
 
                 if (model.Male)
                 {
-                    user.PictureId = 1;
+                    user.UserPictures = _dbContext.UserPictures.Find(1);
                     user.Gender = true;
                 }
                 else
                 {
-                    user.PictureId = 2;
+                    user.UserPictures = _dbContext.UserPictures.Find(2); ;
                     user.Gender = false;
                 }
 

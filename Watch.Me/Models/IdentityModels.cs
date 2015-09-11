@@ -20,7 +20,6 @@ namespace Watch.Me.Models
         }
 
         public virtual UserPictures UserPictures { get; set; }
-        public int PictureId { get; set; } 
         public bool Gender { get; set; }
     }
 
