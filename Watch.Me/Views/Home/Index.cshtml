@@ -9,6 +9,7 @@
 <link href="~/Content/video.css" rel="stylesheet" />
 <link href="~/Content/search.css" rel="stylesheet" />
 <link href="~/Content/slider.css" rel="stylesheet" />
+<link href="~/Content/navAnimate.css" rel="stylesheet" />
 <div id="userForm">
     @if (Request.IsAuthenticated)
     {
@@ -76,8 +77,12 @@
     }
     else
     {
+        <ul id="navigation">
+            <li class="home">@Html.ActionLink("Sign Up", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+            <li class="about"><span>@Html.ActionLink("Sign In", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</span></li>
 
-        <div class="in_out">
+        </ul>
+        @*<div class="in_out">
             <div class="login-button">
                 <div class="arrow">
                     <i class="fa fa-arrow-right"></i>
@@ -94,7 +99,7 @@
                     <span>@Html.ActionLink("Sign In", "Login", "Account", routeValues: null, htmlAttributes: new {id = "loginLink"})</span>
                 </div>
             </div>
-        </div>
+        </div>*@
 
     }
 
@@ -198,6 +203,7 @@
 <script src="~/Scripts/slider.js"></script>
 <script src="~/Scripts/userForm.js"></script>
 <script src="~/Scripts/uploadForm.js"></script>
+<script src="~/Scripts/navAnimate.js"></script>
 @*<script src="~/Scripts/video.js"></script>*@
 <style>
     #redirect {

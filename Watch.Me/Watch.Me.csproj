@@ -231,6 +231,7 @@
     <Content Include="Content\changePass.css" />
     <Content Include="Content\multiPlayers.css" />
     <Content Include="Content\nav.css" />
+    <Content Include="Content\navAnimate.css" />
     <Content Include="Content\register.css" />
     <Content Include="Content\search.css" />
     <Content Include="Content\slider.css" />
@@ -248,6 +249,7 @@
     <Content Include="images\dislike.png" />
     <Content Include="images\fade.png" />
     <Content Include="images\female_carton.jpg" />
+    <Content Include="images\leaf.png" />
     <Content Include="images\like.png" />
     <Content Include="images\logo.png" />
     <Content Include="images\male_cartoon.jpg" />
@@ -287,6 +289,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\modernizr.custom.63321.js" />
     <Content Include="Scripts\nav.js" />
+    <Content Include="Scripts\navAnimate.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
