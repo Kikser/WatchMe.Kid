@@ -302,3 +302,44 @@ p.thought:after
     -webkit-animation-name: fadeInRightBig; 
     animation-name: fadeInRightBig; 
 }
+
+.check {
+    width:100%;
+    margin:3%;
+    height: 15px;
+}
+
+#gender {
+    width: 30%;
+}
+#checkBox {
+    width: 9%;
+    float: left;
+    height: 25px !important;
+}
+/*CheckBox*/
+
+
+input[type="radio"] {
+  appearance: none;
+  /*margin: 0 40px;*/
+  width: 24px;
+  height: 24px;
+  background: #eeeeee;
+  box-shadow: inset 0 0 0 .4em white, 0 0 0 .3em;
+  border-radius: 50%;
+  transition: .2s;
+  cursor: pointer;
+  color: #363945;
+}
+input[type="radio"]:hover, input[type="radio"]:checked {
+  background: #363945;
+  box-shadow: inset 0 0 0 .6em white, 0 0 0 .3em;
+}
+input[type="radio"]:checked {
+  background: #56be8e;
+  box-shadow: inset 0 0 0 .4em white, 0 0 0 .3em #56be8e;
+}
+input[type="radio"]:focus {
+  outline: 0;
+}

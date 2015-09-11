@@ -1,32 +1,41 @@
 ﻿@model Watch.Me.Models.ViewModels.WatchVideoViewModel
 
+<link href="~/Content/multiPlayers.css" rel="stylesheet" />
 
 <div class="wrapper_right_multiple">
     <div class="wrapper_right_multiple_content">
-        @*@Html.Partial('_MultipleVideos')*@
-
-        @foreach (var item in Model.SideVideos)
-        {
-            <div class="one_video effect1">
-                <div data-aspect-ratio="16:9" class="moreVideo ">
-                    <iframe id="ytplayer" type="text/html" src="@item.Url"
-                            frameborder="0" autoplay="false"></iframe>
-                </div>
-                <div class="info_video">
-                    <div id="title">
-                        <div id="title_frame"></div>
-                        <h3>@Html.ActionLink(@item.VideoTitle, "Index", "WatchVideo", new { videoId = item.Id }, new { @class = "navbar-brand" })</h3>
-                    </div>
-                    <div id="tag_video">
-                        @foreach (var tag in item.Tags)
-                        {
-                            <p>@tag.TagDescription</p>
-                        }
-                    </div>
-                </div>
+        <div class='search'>
+            <div class='search-container'>
+                <input placeholder='search' type='text'>
+                <a class='button'>
+                    <i class='icon-search'></i>
+                </a>
             </div>
-        }
+        </div>
+        <div class="video_content">
+            @*@Html.Partial('_MultipleVideos')*@
 
+            @foreach (var item in Model.SideVideos)
+            {
+                <div class="one_video effect1">
+                    <div data-aspect-ratio="16:9" class="moreVideo ">
+                        <iframe id="ytplayer" type="text/html" src="@item.Url"
+                                frameborder="0" autoplay="false"></iframe>
+                    </div>
+                    <div class="info_video">
+                        <div id="title">
+                        <h3>@Html.ActionLink(@item.VideoTitle, "Index", "WatchVideo", new {videoId = item.Id}, new {@class = "navbar-brand"})</h3>
+                        </div>
+                        <div id="tag_video">
+                            @foreach (var tag in item.Tags)
+                        {
+                        <p>@tag.TagDescription</p>
+                        }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
 
 
 
@@ -54,31 +63,43 @@
 
     </div>
 </div>
-
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 <script>
+            $(function() {
+                $("#lik").click(function() {
+                    $("#lik,#likk").toggleClass("press", 1000);
+                });
+                $("#dis").click(function() {
+                    $("#dis,#diss").toggleClass("press", 1000);
+                });
+            });
+        </script>
+        <script>
+            $('.bubble').click(function() {
+                $('.comments').slideToggle('slow');
+                return false;
+            });
 
-    $(document).ready(function () {
+        </script>
+    <script>
+        function showMore() {
+            $('.hidden:lt(4)').removeClass('hidden');
+        };
 
-    $("#lik").click(function () {
-        $("#lik,#likk").toggleClass("press", 1000);
-    });
-    $("#dis").click(function () {
-        $("#dis,#diss").toggleClass("press", 1000);
-    });
-
-    $('.bubble').click(function () {
-        $('.comments').slideToggle('slow');
-        return false;
-    });
-
+        $(document).ready(function () {
+            $('.hidden:lt(4)').removeClass('hidden');
+            $('#show-more').on('click', showMore);
+        });
+    </script>
+<script>
     function showMore() {
         $('.hidden:lt(4)').removeClass('hidden');
     };
 
-
-    $('.hidden:lt(4)').removeClass('hidden');
-    $('#show-more').on('click', showMore);
-
+    $(document).ready(function () {
+        $('.hidden:lt(4)').removeClass('hidden');
+        $('#show-more').on('click', showMore);
     });
 </script>
 

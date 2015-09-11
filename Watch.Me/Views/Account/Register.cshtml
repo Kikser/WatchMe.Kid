@@ -22,18 +22,19 @@
                     @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                     @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label", @id = "label" })
                     @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                    <div class="check">
+                        @Html.LabelFor(m => m.Male, new { @class = "col-md-2 control-label", @id = "gender" })
+                        @Html.RadioButtonFor(model => model.Gender, true, new { @class = "form-control", @id = "checkBox" })
 
-                    @Html.LabelFor(m => m.Male, new { @class = "col-md-2 control-label", @id = "label" })
-                    @Html.RadioButtonFor(model => model.Gender, true, new { @class = "form-control" })
-
-                    @Html.LabelFor(m => m.Female, new { @class = "col-md-2 control-label", @id = "label" })
-                    @Html.RadioButtonFor(m => m.Gender,true, new { @class = "form-control" })
-                    <input type="submit" class="button" value="Register" />
+                        @Html.LabelFor(m => m.Female, new { @class = "col-md-2 control-label", @id = "gender" })
+                        @Html.RadioButtonFor(m => m.Gender, true, new { @class = "form-control", @id = "checkBox" })
+                    </div>
+    <input type="submit" class="button" value="Register" />
 
 
 
 
-                </div>
+            </div>
 
         }
 
