@@ -6,11 +6,9 @@
 }
 
 .search {
-    width: 30%;
+    width: 100%;
     float: right;
     display: block;
-    /*width: 25em;
-  margin: 100px auto;*/
 }
 
 .search-container {
@@ -22,6 +20,7 @@
   box-shadow: 0 0 5px #6A5D4F;*/
     -moz-transition: all 0.35s;
     -webkit-transition: all 0.35s;
+    margin-right: -9%;
 }
 
     .search-container:hover {

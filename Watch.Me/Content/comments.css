@@ -174,3 +174,113 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+
+/*New Comment Box*/
+
+@import url(//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css);
+.detailBox {
+  width: 82%;
+  border: 1px solid #bbb;
+  margin: 50px;
+}
+.detailBox p {
+    font-size:20px;
+}
+.titleBox {
+  background-image: -webkit-linear-gradient(top, #CBF3FF, #f3f3f4);
+  padding: 10px;
+    text-align: center;
+   
+
+}
+
+.titleBox label {
+ 
+  margin: 0;
+  display: inline-block;
+   font-family: Gabriola;
+    font-size: 20px;
+    font-weight: bold;
+    color: #7a3e1a;
+}
+
+.commentBox {
+  padding: 10px;
+  border-top: 1px dotted #bbb;
+}
+
+.commentBox .form-group:first-child,
+.actionBox .form-group:first-child {
+  width: 80%;
+}
+
+.commentBox .form-group:nth-child(2),
+.actionBox .form-group:nth-child(2) {
+  width: 18%;
+}
+
+.actionBox .form-group * {
+  width: 100%;
+      background-image: -webkit-linear-gradient(top, #CBF3FF, #f3f3f4);
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+      border: 1px solid #a7a8ab;
+      border-radius: 10px;
+      font-family: Gabriola;
+    font-size: 15px;
+    font-weight: bold;
+    color: #7a3e1a;
+    /*padding: 0 15px;
+    margin: 10px 0;*/
+}
+
+.taskDescription {
+  margin-top: 10px 0;
+}
+#add_comment {
+    height:75px!important;
+}
+.commentList {
+  padding: 0;
+  list-style: none;
+  max-height: 800px;
+  overflow: auto;
+}
+
+.commentList li {
+  margin: 0;
+  margin-top: 10px;
+  border-bottom: 1px dotted black;
+      padding: 2%;
+}
+
+.commentList li > div {
+  display: table-cell;
+}
+
+.commenterImage {
+  width: 40px;
+  margin-right: 5px;
+  height: 100%;
+  float: left;
+}
+
+.commenterImage img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.commentText p {
+  margin: 0;
+}
+
+.sub-text {
+  color: #aaa;
+  font-family: verdana;
+  font-size: 11px;
+}
+
+.actionBox {
+  border-top: 1px dotted #bbb;
+  padding: 10px;
+}

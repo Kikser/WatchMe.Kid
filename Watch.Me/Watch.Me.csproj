@@ -235,6 +235,7 @@
     <Content Include="Content\search.css" />
     <Content Include="Content\slider.css" />
     <Content Include="Content\sliderMain.css" />
+    <Content Include="Content\subNav.css" />
     <Content Include="Content\uploadContainer.css" />
     <Content Include="Content\userForm.css" />
     <Content Include="Content\video.css" />
@@ -292,6 +293,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\sb-admin-2.js" />
     <Content Include="Scripts\slider.js" />
+    <Content Include="Scripts\subNav.js" />
     <Content Include="Scripts\uploader.js" />
     <Content Include="Scripts\uploadForm.js" />
     <Content Include="Scripts\userForm.js" />

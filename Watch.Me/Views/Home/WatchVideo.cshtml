@@ -7,18 +7,43 @@
 <link href="~/Content/video.css" rel="stylesheet" />
 <link href="~/Content/search.css" rel="stylesheet" />
 <link href="~/Content/comments.css" rel="stylesheet" />
-<link href="~/Content/multiPlayers.css" rel="stylesheet" />
-<div class="sub_nav">
+<link href="~/Content/multiPlayers.css" rel="stylesheet"/>
+<link href="~/Content/subNav.css" rel="stylesheet" />
+
+<div class="radmenu">
+    <a href="#" class="show">Search</a>
+    <ul>
+        <li>
+            <a href="#" id=" test"  class="">Popular</a>
+
+        </li>
+        <li>
+            <a href="#" id="recentButton">Recently Uploaded</a>
+
+        </li>
+        <li>
+            <a href="#" id="recommend">Recommended</a>
+
+        </li>
+
+
+    </ul>
+</div>
+
+
+
+@*<div class="sub_nav">
     <div class="listi">
         <ul>
+            
+            <li class="active"><a href="#modern"><span id="test">Popular</span></a></li>
+            <li><a href="#modern"><span id="recentButton">Recently Uploaded</span></a></li>
+            <li><a href="#modern"><span id="test">Popular</span></a></li>
+            <li>@Html.ActionLink("Recomeneded", "MultipleVideoes", "WatchVideo", new { searchType = 1 }, null)</li>
+            <li><a href="#oldSkool">Recomeneded</a></li>
             <li class="active"><a href="#modern">Popular</a></li>
-            <li><button id="test">"Popular"</button></li>
-            <li><button id="recentButton">Recent</button></li>
-            @*<li>@Html.ActionLink("Recomeneded", "MultipleVideoes", "WatchVideo", new { searchType = 1 }, null)</li>*@
-            <li><a href="#oldSkool">Recently Uploaded</a></li>
-            @*<li class="active"><a href="#modern">Popular</a></li>
             <li><a href="#oldSkool">Recommended</a></li>
-            <li><a href="#oldSkool">Recently Uploaded</a></li>*@
+            <li><a href="#oldSkool">Recently Uploaded</a></li>
         </ul>
     </div>
     <div class='search'>
@@ -29,7 +54,7 @@
             </a>
         </div>
     </div>
-</div>
+</div>*@
 <div class="wrapper_left_video">
 
     <div class="well">
@@ -63,8 +88,54 @@
         </button>
     </div>
 
-    <div class='comments'>
-        <div class='loader'></div>
+<div class='comments'>
+    <div class="detailBox">
+        <div class="titleBox">
+            <label>Comment Box</label>
+           
+        </div>
+     
+        <div class="actionBox">
+            <ul class="commentList">
+                <li>
+                    <div class="commenterImage">
+                        <img src="http://lorempixel.com/50/50/people/6" />
+                    </div>
+                    <div class="commentText">
+                        <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
+
+                    </div>
+                </li>
+                <li>
+                    <div class="commenterImage">
+                        <img src="http://lorempixel.com/50/50/people/7" />
+                    </div>
+                    <div class="commentText">
+                        <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
+
+                    </div>
+                </li>
+                <li>
+                    <div class="commenterImage">
+                        <img src="http://lorempixel.com/50/50/people/9" />
+                    </div>
+                    <div class="commentText">
+                        <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
+
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <input class="form-control" id="add_comment" type="text" placeholder="Add Comment" />
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    @*<div class='loader'></div>
         <div class='inner'>
             <div class='add-new'>
                 <textarea class='input your-msg' placeholder='Type your comment here...'></textarea>
@@ -74,14 +145,10 @@
             </div>
            
         </div>
-    </div>
+    </div>*@
 </div>
 
-@*<div class="wrapper_right_multiple">
-    <div class="wrapper_right_multiple_content">*@
-        @*@Html.Partial('_MultipleVideos')*@
-
-
+    </div>
         <div id="renderPartial">
             @Html.Partial("~/Views/Home/_MultipleVideoesPartialView.cshtml", Model)
         </div>
@@ -131,9 +198,9 @@
 
 
 
-            <a href="#" id="show-more">
+            @*<a href="#" id="show-more">
                 <div class="arrow bounce"> </div>
-            </a>
+            </a>*@
 
 
         @*</div>
@@ -141,6 +208,7 @@
    
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script src="~/Scripts/subNav.js"></script>
 <script src="~/Scripts/comments.js"></script>
 
 <script type="text/javascript">
@@ -167,28 +235,27 @@
                 }
             });
         });
-
-
+       
     });
 </script>
 
 @*<script>
-    $(function() {
-        $("#lik").click(function() {
-            $("#lik,#likk").toggleClass("press", 1000);
+        $(function() {
+            $("#lik").click(function() {
+                $("#lik,#likk").toggleClass("press", 1000);
+            });
+            $("#dis").click(function() {
+                $("#dis,#diss").toggleClass("press", 1000);
+            });
         });
-        $("#dis").click(function() {
-            $("#dis,#diss").toggleClass("press", 1000);
+    </script>
+    <script>
+        $('.bubble').click(function() {
+            $('.comments').slideToggle('slow');
+            return false;
         });
-    });
-</script>
-<script>
-    $('.bubble').click(function() {
-        $('.comments').slideToggle('slow');
-        return false;
-    });
 
-</script>
+    </script>
 <script>
     function showMore() {
         $('.hidden:lt(4)').removeClass('hidden');
