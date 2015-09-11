@@ -1,85 +1,148 @@
-﻿* {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    font-family: "Cabin";
-}
+﻿@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
 
-.search {
+
+.searchbox {
     width: 100%;
-    float: right;
-    display: block;
+    position: relative;
 }
 
-.search-container {
-    overflow: hidden;
-    float: right;
-    height: 4em;
-    width: 4em;
-    /*border-radius: 2em;
-  box-shadow: 0 0 5px #6A5D4F;*/
-    -moz-transition: all 0.35s;
-    -webkit-transition: all 0.35s;
-    margin-right: -9%;
-}
-
-    .search-container:hover {
-        width: 25em;
-        border-radius: 5px 2em 2em 5px;
+    .searchbox input[type=search] {
+        width: 100%;
+        border: 1px solid #eee;
+        padding: 7px 10px;
+        -webkit-appearance: none;
+        margin-left: 4%;
+        box-shadow: 0 0 15px #222;
+        font-family: Gabriola;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        color: #7a3e1a;
     }
 
-        .search-container:hover input {
-            display: inline-block;
-            width: 19em;
-            padding: 10px;
+    .searchbox .search-autocomplete {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        font-size: 0.9em;
+        border: 1px solid #eee;
+        border-top: none;
+        background: #fff;
+        box-shadow: 0 4px 4px rgba(10, 10, 10, 0.1);
+        max-height: 300px;
+        overflow-y: auto;
+    }
+
+        .searchbox .search-autocomplete ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
-input {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    float: left;
-    width: 0em;
-    height: 2em;
-    margin: 1em;
-    margin-right: -4.5em;
-    background: #fff;
-    color: #6A5D4F;
-    font-size: 1em;
-    font-weight: 600;
-    padding: 0px;
-    border: 0;
-    border-radius: 5px;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2) inset;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-    -moz-transition: all 0.25s;
-    -webkit-transition: all 0.25s;
-}
+        .searchbox .search-autocomplete li, .searchbox .search-autocomplete a {
+            display: block;
+        }
 
-    input:focus {
-        outline: none;
-        box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.25), 0 1px 5px rgba(0, 0, 0, 0.15);
-    }
+        .searchbox .search-autocomplete li {
+            border-bottom: 1px solid #eee;
+            color: #0074D9;
+        }
 
-.button {
-    float: right;
-    width: 1.75em;
-    height: 1.75em;
-    margin: 0.125em;
-    background-image: url('../images/srch.png');
-    background-repeat: no-repeat;
+            .searchbox .search-autocomplete li:last-of-type {
+                border-bottom: none;
+            }
+
+            .searchbox .search-autocomplete li:hover, .searchbox .search-autocomplete li:active {
+                background: #fafafa;
+                color: #FF4136;
+            }
+
+        .searchbox .search-autocomplete a {
+            padding: 7px 10px;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .searchbox .search-autocomplete .search-description {
+            font-size: 0.8em;
+            color: #999;
+            font-weight: 300;
+            display: block;
+        }
+
+        .searchbox .search-autocomplete .loader, .searchbox .search-autocomplete .load-more, .searchbox .search-autocomplete .no-results, .searchbox .search-autocomplete .error {
+            padding: 7px 10px;
+            text-align: center;
+        }
+
+        .searchbox .search-autocomplete .load-more {
+            font-size: 0.8em;
+            color: #0074D9;
+        }
+
+        .searchbox .search-autocomplete .error, .searchbox .search-autocomplete .error:hover, .searchbox .search-autocomplete .error:active {
+            color: #FF4136;
+            font-family: Gabriola;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .searchbox .search-autocomplete .no-results, .searchbox .search-autocomplete .no-results:hover, .searchbox .search-autocomplete .no-results:active {
+            color: #999;
+        }
+
+/* SpinKit by Tobias Ahlit
+/* https://github.com/tobiasahlin/SpinKit
+/**********************************************************/
+.spinner {
+    margin: auto;
+    width: 70px;
     text-align: center;
-    font-size: 2em;
-    /*border-radius: 50%;
-  box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.25), 0 1px 1px rgba(0, 0, 0, 0.25);*/
-    text-shadow: 0 -2px 1px rgba(0, 0, 0, 0.3);
 }
 
-    .button i {
-        margin-top: 0.3em;
+    .spinner > div {
+        width: 14px;
+        height: 14px;
+        background-color: #0074D9;
+        border-radius: 100%;
+        display: inline-block;
+        -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+        animation: bouncedelay 1.4s infinite ease-in-out;
+        /* Prevent first frame from flickering when animation starts */
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
     }
 
-    .button:active {
-        border: 0 !important;
-        text-shadow: 0 0 0;
+    .spinner .bounce1 {
+        -webkit-animation-delay: -0.32s;
+        animation-delay: -0.32s;
     }
+
+    .spinner .bounce2 {
+        -webkit-animation-delay: -0.16s;
+        animation-delay: -0.16s;
+    }
+
+@-webkit-keyframes bouncedelay {
+    0%, 80%, 100% {
+        -webkit-transform: scale(0);
+    }
+
+    40% {
+        -webkit-transform: scale(1);
+    }
+}
+
+@keyframes bouncedelay {
+    0%, 80%, 100% {
+        transform: scale(0);
+        -webkit-transform: scale(0);
+    }
+
+    40% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+}

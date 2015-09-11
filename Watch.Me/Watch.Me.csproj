@@ -225,6 +225,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\aboutUs.css" />
     <Content Include="Content\comments.css" />
+    <Content Include="Content\contactUs.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\login.css" />

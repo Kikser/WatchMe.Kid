@@ -1,25 +1,43 @@
 ﻿@model Watch.Me.Models.ViewModels.WatchVideoViewModel
 
 <link href="~/Content/multiPlayers.css" rel="stylesheet" />
-
+<link href="~/Content/search.css" rel="stylesheet" />
 <div class="wrapper_right_multiple">
     <div class="wrapper_right_multiple_content">
-        <div class='search'>
+        @*<div class='search'>
             <div class='search-container'>
                 <input placeholder='search' type='text'>
                 <a class='button'>
                     <i class='icon-search'></i>
                 </a>
             </div>
-        </div>
+        </div>*@
+        <form class="searchbox">
+            <input type="search" placeholder="Search" id="search" autocomplete="off">
+            <div id="search-autocomplete" class="search-autocomplete">
+                <ul>
+
+                    <li class="load-more"><a href="#">Load more</a></li>
+                    <li class="no-results">No results.</li>
+                    <li class="error">%err%</li>
+                </ul>
+                <div class="loader">
+                    <div class="spinner">
+                        <div class="bounce1"></div>
+                        <div class="bounce2"></div>
+                        <div class="bounce3"></div>
+                    </div>
+                </div>
+            </div>
+        </form>
         <div class="video_content">
             @*@Html.Partial('_MultipleVideos')*@
 
             @foreach (var item in Model.SideVideos)
             {
-                <div class="one_video effect1">
+                <div class="one_video effect1 hidden">
                     <div data-aspect-ratio="16:9" class="moreVideo ">
-                        <iframe class="hidden"id="ytplayer" type="text/html" src="@item.Url"
+                        <iframe id="ytplayer" type="text/html" src="@item.Url"
                                 frameborder="0" autoplay="false"></iframe>
                     </div>
                     <div class="info_video">
@@ -65,6 +83,7 @@
 </div>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script src="~/Scripts/search.js"></script>
 <script>
             $(function() {
                 $("#lik").click(function() {
@@ -92,14 +111,5 @@
             $('#show-more').on('click', showMore);
         });
     </script>
-<script>
-    function showMore() {
-        $('.hidden:lt(4)').removeClass('hidden');
-    };
 
-    $(document).ready(function () {
-        $('.hidden:lt(4)').removeClass('hidden');
-        $('#show-more').on('click', showMore);
-    });
-</script>
 

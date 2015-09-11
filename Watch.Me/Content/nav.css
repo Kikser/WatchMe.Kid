@@ -325,10 +325,12 @@ height:100%;
   text-align:center;
 }
 .footer h3{
-	font-family: 'Helvetica';
-	font-size: 30px;
-	font-weight: 100;
-	margin-top:70px;
-	margin-left:40px;
-    color: #F16529;
+	font-size: 38px;
+    font-weight: bold;
+    margin-top: 70px;
+    margin-left: 40px;
+    color: #603d05;
+    font-family: Gabriola;
+    text-decoration: none;
+    text-align: center;
 }
