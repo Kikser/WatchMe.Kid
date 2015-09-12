@@ -346,11 +346,13 @@
     <Content Include="Views\Admin\AdminHome.cshtml" />
     <Content Include="Views\Shared\_UploadForm.cshtml" />
     <Content Include="Views\AdminVideos\UnApprovedVideoes.cshtml" />
-    <Content Include="Views\AdminVideos\ApproveTag.cshtml" />
     <Content Include="Views\Shared\_MultipleVideos.cshtml" />
     <Content Include="Views\Account\GetUserPicture.cshtml" />
     <Content Include="Views\Home\_MultipleVideoesPartialView.cshtml" />
     <Content Include="Views\Home\_PostVideo.cshtml" />
+    <Content Include="Views\AdminVideos\ApproveTag.cshtml" />
+    <Content Include="Views\Home\_LikesDislikes.cshtml" />
+    <Content Include="Views\Home\_Comments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

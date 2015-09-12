@@ -19,12 +19,12 @@ namespace Watch.Me.Controllers
         public ActionResult Index()
         {
             string userId = User.Identity.GetUserId();
-           // bool isAdmin = User.IsInRole("admin");
+            //bool isAdmin = User.IsInRole("admin");
 
-            //if logged user is admin it is redirected to admin panel
+            ////if logged user is admin it is redirected to admin panel
             //if (!isAdmin)
             //{
-            //    return RedirectToAction("Index", "AdminVideos");
+            //    return RedirectToAction("Home", "AdminVideos");
             //}
 
 
@@ -114,7 +114,7 @@ namespace Watch.Me.Controllers
                     }).ToList();
 
 
-               // var userPicture = _dbContext.Users.FirstOrDefault(x => x.Id == userId && x.UserPictures. == x.UserPictures.Id).UserPictures.PictureUrl;
+                var userData = _dbContext.Users.FirstOrDefault(x => x.Id == userId);
 
                 var allVideos = new DisplayedVideosViewModel()
                 {
@@ -123,7 +123,8 @@ namespace Watch.Me.Controllers
                     ReccomendedVideos = recommendVidoes,
                     LoggedUser = true,
                     AvailableTags = availableTags,
-                    
+                    PictureUrl = userData.UserPictures.PictureUrl,
+                    UserEmail = userData.Email
                 };
                 return View(allVideos);
             }

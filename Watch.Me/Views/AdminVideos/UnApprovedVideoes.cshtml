@@ -1,5 +1,4 @@
-﻿@using Watch.Me.Models.Entities
-@model IEnumerable<Watch.Me.Models.ViewModels.ApproveVideoViewModel>
+﻿@model IEnumerable<Watch.Me.Models.ViewModels.ApproveVideoViewModel>
 
 @{
     ViewBag.Title = "UnApprovedVideoes";
@@ -27,7 +26,8 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+
+    @foreach (var item in Model) {
     <tr>
         <td>
             <a href="@item.Url">
@@ -43,12 +43,16 @@
         </td>
 
         <td>
-            @foreach (var tag in item.Tags)
+            @if (item.Tags != null)
             {
-                
-                <p>@tag.TagDescription</p>
+                foreach (var tag in item.Tags)
+                {
+
+                    <p>@tag.TagDescription</p>
+                }
             }
-            @Html.ActionLink("Menage Tags", "ApproveTag", new { videoId = item.Id })
+            
+            @Html.ActionLink("Manage Tags", "ApproveTag", new {videoId = item.Id})
         </td>
 
         <td>

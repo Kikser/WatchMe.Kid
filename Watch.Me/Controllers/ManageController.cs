@@ -22,6 +22,8 @@ namespace Watch.Me.Controllers
             UserManager = userManager;
         }
 
+        private readonly ApplicationDbContext _dbContext = new ApplicationDbContext();
+
         private ApplicationUserManager _userManager;
         public ApplicationUserManager UserManager
         {
@@ -206,7 +208,16 @@ namespace Watch.Me.Controllers
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
-            return View();
+            var currentUser = User.Identity.GetUserId();
+            var userData = _dbContext.Users.FirstOrDefault(x => x.Id == currentUser);
+            ChangePasswordViewModel model = new ChangePasswordViewModel();
+            if (userData != null)
+            {
+                model.PictureUrl = userData.UserPictures.PictureUrl;
+                model.UserEmail = userData.Email;
+
+            }
+            return View(model);
         }
 
         //

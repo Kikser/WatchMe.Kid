@@ -194,29 +194,6 @@ namespace Watch.Me.Controllers
 
 
 
-        //public ActionResult CheckBox()
-        //{
-        //    return View(new RegisterViewModel
-        //    {
-        //        IsFemale = true
-        //    });
-        //}
-
-        //[HttpPost]
-        //public ActionResult CheckBox(RegisterViewModel model)
-        //{
-        //    return RedirectToAction("Index", "Home");
-        //}
-
-
-
-
-
-
-
-
-
-
 
         //
         // GET: /Account/ConfirmEmail

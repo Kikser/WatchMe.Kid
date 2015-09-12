@@ -1,0 +1,34 @@
+﻿@model Watch.Me.Models.ViewModels.ApproveTagsPerVideo
+
+@{
+    ViewBag.Title = "ApproveTag";
+    Layout = "~/Views/Admin/_AdminMaster.cshtml";
+}
+
+<h2>Approve tag for video @Model.VideoTitle</h2>
+
+
+<p>
+    @Html.ActionLink("Add tags for the video", "AddTag", new { videoId = Model.MovieId })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tag Description
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.TagsPerVideos)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TagDescription)
+            </td>
+            <td>
+                @Html.ActionLink("Remove tag", "RemoveTag", new { tagId = item.IdTag, videoId = Model.MovieId }) |
+            </td>
+        </tr>
+    }
+
+</table>

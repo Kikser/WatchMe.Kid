@@ -22,7 +22,7 @@
                 <div class="mobile clearfix">
                     <div class="header">
                         <span class="ion-ios-navicon pull-left"><i></i></span>
-                        <span class="title">@*TUKA IDE SLIKATA NA USEROT*@</span>
+                        <span class="title"> @*TUKA IDE SLIKATA NA USEROT*@</span>
                     </div>
 
                     <div class="sidebar">
@@ -30,11 +30,11 @@
                         <div class="sidebar-content">
                             <div class="top-head">
 
-                                <img class="profilepic" src="#"/>
+                                <img class="profilepic" src="@Model.PictureUrl" />
 
-                                <div class="email">@*TUKA IDE MAILOT NA USEROT*@
+                                <div class="email">  
 
-                                    <span>@Html.ActionLink("kr.arsovski@gmail.com", "ChangePassword", "Manage")</span>                                
+                                    <span>@Html.ActionLink(@Model.UserEmail, "ChangePassword", "Manage")</span>                                
                                 </div>
 
                             </div>

@@ -14,7 +14,7 @@
     <a href="#" class="show">Search</a>
     <ul>
         <li>
-            <a href="#" id=" test"  class="">Popular</a>
+            <a href="#" id=" test" class="">Popular</a>
 
         </li>
         <li>
@@ -30,6 +30,7 @@
     </ul>
 </div>
 
+@Html.HiddenFor(m => m.Id, new { id = "videoId" })
 
 <div class="wrapper_left_video">
 
@@ -39,32 +40,38 @@
 
     <div class="video_stuff">
         <div class="video_title">
-            <h3>@Model.VideoTitle</h3> 
+            <h3>@Model.VideoTitle</h3>
             <p>
-                @*Tags are here:*@
                 @foreach (var item in Model.Tags)
                 {
                     <label>@item.TagDescription</label>
                 }
             </p>
         </div>
-        <div class="like">
-            <i id="lik"></i>
-            <span id="likk">liked!</span>
-            
-            @Model.NumberLike
-        </div>
-        <div class="dislike">
-            <i id="dis"></i>
-            <span id="diss">disliked!</span>
-            @Model.NumberDislike
-        </div>
+
+
+        @Html.Partial("~/Views/Home/_LikesDislikes.cshtml", Model)
+
+
+        @*<div class="like">
+                <i id="lik"></i>
+                <span id="likk">liked!</span>
+
+                @Model.NumberLike
+            </div>
+            <div class="dislike">
+                <i id="dis"></i>
+                <span id="diss">disliked!</span>
+                @Model.NumberDislike
+            </div>*@
+
         <button class='bubble'>
-            <p>Add Comment</p>
+            <p>Comments</p>
         </button>
     </div>
 
-    <div class='comments'>
+    @Html.Partial("~/Views/Home/_Comments.cshtml", Model)
+    @*<div class='comments'>
         <div class="detailBox">
             <div class="titleBox">
                 <label>Comment Box</label>
@@ -112,7 +119,7 @@
             </div>
         </div>
        
-    </div>
+    </div>*@
 </div>
 
 
@@ -152,8 +159,57 @@
                 }
             });
         });
-       
+
     });
+    var videoId = $("#videoId").val();
+    //var comment = $("#add_comment").val();
+
+    function likeDislike(emote, video) {        
+            $.ajax({
+                url: '/WatchVideo/AddEmoteToVideo',
+                data: {
+                    type: emote,
+                    videoId: video
+                },
+                dataType: 'html',
+                success: function (data) {
+                    console.log("success");
+                    $('#likeDislike').html(data);
+                }
+            });
+    }
+
+    $('#lik').click(function () {
+        likeDislike(1, videoId);
+    });
+
+    $('#dis').click(function () {
+        likeDislike(2, videoId);
+    });
+
+    function addComment(video, insertedComment) {
+        $.ajax({
+            url: '/WatchVideo/InsertComment',
+            data: {
+                videoId: video,
+                commentText: insertedComment
+            },
+            dataType: 'html',
+            success: function (data) {
+                console.log("success");
+                $('#likeDislike').html(data);
+            }
+        });
+    }
+
+    $('#insertComment').click(function () {
+        var currentVideo = $("#videoId").val();
+        var comment = $("#add_comment").val();
+        console.log("currentVideo = " + currentVideo);
+        addComment(currentVideo, comment);
+    });
+
+    
 </script>
 
 @*<script>

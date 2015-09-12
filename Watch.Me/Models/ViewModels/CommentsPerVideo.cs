@@ -11,5 +11,6 @@ namespace Watch.Me.Models.ViewModels
         public DateTime DateCreated { get; set; }
         public string CommentText { get; set; }
         public string CommentBy { get; set; }
+        public string UserPicture { get; set; }     //used in Comment as poster picture
     }
 }

@@ -14,10 +14,18 @@ namespace Watch.Me.Controllers.Admin
     {
         private readonly ApplicationDbContext _dbContext = new ApplicationDbContext();
         // GET: Admin
+
+        public ActionResult Home()
+        {
+            return View("~/Views/Admin/AdminHome.cshtml");
+        }
+
         public ActionResult Index()
         {
             using (_dbContext)
             {
+                ApproveVideoViewModel result = new ApproveVideoViewModel();
+
                 var model = _dbContext.Videos.Where(e => e.IsApproved == false)
                     .Select(x => new ApproveVideoViewModel
                     {
@@ -32,9 +40,10 @@ namespace Watch.Me.Controllers.Admin
                                 IdTag = tag.Id,
                                 TagDescription = tag.Description
                             }).ToList()
-                    }).OrderByDescending(o => o.DateCreated);
-            
-            return View("~/Views/AdminVideos/UnApprovedVideoes.cshtml", model);
+                    }).OrderByDescending(o => o.DateCreated).ToList();
+
+
+                return View("~/Views/AdminVideos/UnApprovedVideoes.cshtml", model);
             }
         }
 
@@ -76,6 +85,13 @@ namespace Watch.Me.Controllers.Admin
                     VideoTitle = _dbContext.Videos.Find(videoId).VideoTitle,
                     MovieId = _dbContext.Videos.Find(videoId).Id
                 };
+
+                if (tagsPerVideo.TagsPerVideos == null)
+                {
+                    return View();
+                }
+
+
                 return View(tagsPerVideo);
             }
             
@@ -98,11 +114,17 @@ namespace Watch.Me.Controllers.Admin
             return RedirectToAction("Index");
         }
 
-        public ActionResult AddTag(int videoId)
-        {
-            //todo Allow user to add tags per video
-            return View();
-        }
+        //public ActionResult AddTagPerVideo(int videoId)
+        //{
+        //    var availableTags = _dbContext.Tags.GroupBy(g => g.Description)
+        //            .Select(s => new AvailableTags()
+        //            {
+        //                TagDescription = s.FirstOrDefault().Description,
+        //                TagId = s.FirstOrDefault().Id
+        //            }).ToList();
+
+        //    return View(availableTags);
+        //}
 
     }
 }

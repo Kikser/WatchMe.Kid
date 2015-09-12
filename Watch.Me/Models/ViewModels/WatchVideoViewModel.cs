@@ -16,6 +16,7 @@ namespace Watch.Me.Models.ViewModels
         //UserData
         public string ApplicationUserId { get; set; }
         public string UserName { get; set; }
+        public string UserPicture { get; set; }
 
         //Emotions
         public int NumberLike { get; set; }
