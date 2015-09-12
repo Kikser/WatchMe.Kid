@@ -426,6 +426,13 @@ namespace Watch.Me.Controllers
             return View();
         }
 
+
+        public ActionResult SignOutAdmin()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Home", "Index");
+        }
+
         //[ChildActionOnly]
         //public PartialViewResult GetUserInfo()
         //{

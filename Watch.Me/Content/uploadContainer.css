@@ -7,6 +7,62 @@
   font-family: "latoheavy";
   src: url('https://dl.dropboxusercontent.com/u/47663272/upload-module-wireframe/Lato-Heavy.ttf') format("truetype")
 }
+.form_title {
+    font-size: 40px;
+    font-family: Cabrola;
+    color: #7A3E1A;
+}
+.form-control {
+    display: block!important;
+    width: 100%!important;
+    height: 34px!important;
+    padding: 6px 12px!important;
+    font-size: 14px!important;
+    line-height: 1.428571429!important;
+    color: #555!important;
+    vertical-align: middle!important;
+    background-color: #fff!important;
+    border: 1px solid #ccc!important;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075)!important;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075)!important;
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s!important;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s!important;
+    float:left;
+}
+ #insertVideo {
+     width: 80%;
+background-color: #9FEDFB;
+height: 400px;
+ }       
+ .input_field {
+    width: 40%;
+    float: left;
+        margin-left: 8%;
+    height: 120px;
+    text-align: center;
+ }
+ .checkBox {
+   width: 40%;
+float: left;
+height: 33px !important;
+margin: 6%;
+}
+ #confirmButton {
+     width:100%;
+         margin-left: -19%;
+     box-shadow: 0px 9px 0px 0px rgba(255, 255, 255, 0), 0px -9px 0px 0px rgba(255, 255, 255, 0), 10px 0px 30px 0px rgba(0, 0, 0, 0.15), -10px 0px 30px 0px rgba(0, 0, 0, 0.15);
+     margin-top: 5%;
+height: 50px;
+ }
+ #but {
+    margin-top: 12%;
+    width: 43%;
+   
+ }
+ .k-checkbox {
+     margin-bottom:4%;
+ }
 .web_dialog_overlay {
     position: fixed;
     top: 0;

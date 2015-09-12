@@ -21,11 +21,11 @@ namespace Watch.Me.Controllers
             string userId = User.Identity.GetUserId();
             bool isAdmin = User.IsInRole("admin");
 
-            ////if logged user is admin it is redirected to admin panel
-            //if (!isAdmin)
-            //{
-            //    return RedirectToAction("Home", "AdminVideos");
-            //}
+            //if logged user is admin it is redirected to admin panel
+            if (isAdmin)
+            {
+                return RedirectToAction("Home", "AdminVideos");
+            }
 
 
             //Takes the most recent 6 videos 
@@ -51,7 +51,6 @@ namespace Watch.Me.Controllers
                     VideoTitle = x.FirstOrDefault().Video.VideoTitle,
                     Count = x.Count(l => l.Love)
                 }).OrderByDescending(o => o.Count)
-                .Take(3)
                 .ToList();
 
             var mostLikeVideoList = new List<DisplayedVideosViewModel>();

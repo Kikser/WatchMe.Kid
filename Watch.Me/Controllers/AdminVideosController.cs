@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Watch.Me.Models;
@@ -114,9 +115,7 @@ namespace Watch.Me.Controllers.Admin
             return RedirectToAction("Index");
         }
 
-        
-
-
+       
         //public ActionResult AddTagPerVideo(int videoId)
         //{
         //    var availableTags = _dbContext.Tags.GroupBy(g => g.Description)

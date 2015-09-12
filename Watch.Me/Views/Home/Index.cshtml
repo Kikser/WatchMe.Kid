@@ -5,7 +5,6 @@
 @model Watch.Me.Models.ViewModels.DisplayedVideosViewModel
 <link href="~/Content/userForm.css" rel="stylesheet" />
 <link href="~/Content/uploadContainer.css" rel="stylesheet" />
-<link href="~/Content/UploadTombola.css" rel="stylesheet" />
 <link href="~/Content/video.css" rel="stylesheet" />
 <link href="~/Content/search.css" rel="stylesheet" />
 <link href="~/Content/slider.css" rel="stylesheet" />
@@ -95,77 +94,47 @@
 @if (Model.LoggedUser)
 {
     <div id="dialog" class="web_dialog">
-     
+
         <div class="wheel closed">
-            <form id="insertVideo" onsubmit="return false;">
 
-                <ul id="ul">
-                    <li>
-                        <label class="sent-label">Thank You!</label>
-                        <input placeholder="Hi there! Press Tab..." tabindex="1">
-                    </li>
-                    <li>
-                        <input placeholder="enter title of your video," id="videoTitle" tabindex="2">
-                    </li>
-                    <li>
-                        <input placeholder="next step is..." tabindex="3">
-                    </li>
-                    <li>
-                        <input placeholder="enter video's tag," tabindex="4">
-                    </li>
-                    <li>
-                        <input placeholder="before you finish," tabindex="5">
-                    </li>
-                    <li>
-                        <input placeholder="enter url of the video." tabindex="6">
-                    </li>
-                    <li>
-                        <input placeholder="are you ready???," tabindex="7">
-                    </li>
-                    <li>
-                        <input placeholder="Press Enter to Upload." tabindex="8">
-                    </li>
-                </ul>
-
-
-
-
-
-
-
-
-
-
-                <div>
-                    <h2>Title</h2>
+            <form id="insertVideo">
+                <div class="input_field">
+                    <div>
+                        <h2 class="form_title">Title</h2>
+                    </div>
+                    <div>
+                        <input type="text" id="videoTitle" class="form-control" name="videoTitle" style="background-color: white" required>
+                    </div>
                 </div>
-                <div>
-                    <input type="text" id="videoTitle" name="videoTitle" style="background-color: white" required>
-                </div>
+                <div class="input_field">
+                    <div>
+                        <h2 class="form_title">Url</h2>
+                    </div>
 
-                <div style="padding-top: 50px;">
-                    <h2>Url</h2>
+                    <div>
+                        <input type="text" id="videoUrl" class="form-control" name="videoUrl" style="background-color: white" required>
+                    </div>
                 </div>
+                <div class="input_field">
+                    <div>
+                        @foreach (var tag in Model.AvailableTags)
+                        {
 
-                <div>
-                    <input type="text" id="videoUrl" name="videoUrl" style="background-color: white" required>
+                            <div class="checkBox">
+                                <input type="checkbox" id="@tag.TagId" class="k-checkbox">
+
+                                <label class="k-checkbox-label" for="@tag.TagId">@tag.TagDescription</label>
+                            </div>
+                        }
+                    </div>
                 </div>
-
-                <div style="padding-top: 30px;">
-                    @foreach (var tag in Model.AvailableTags)
-                {
-                        <p>
-                            <input type="checkbox" id="@tag.TagId" class="k-checkbox">
-                            <label class="k-checkbox-label" for="@tag.TagId">@tag.TagDescription</label>
-                        </p>
-                }
-                </div>
-
-                <div style="padding-top: 10px;">
-                    <input type="button" id="confirmButton" value="Post the video" />
+                <div id="but" class="input_field">
+                    <input type="button" class="" id="confirmButton" value="Post the video" />
                 </div>
             </form>
-</div>
+
+           
+        </div>
         </div>
 }
 
@@ -237,7 +206,6 @@
 <script src="~/Scripts/userForm.js"></script>
 <script src="~/Scripts/uploadForm.js"></script>
 <script src="~/Scripts/navAnimate.js"></script>
-<script src="~/Scripts/UploadTombola.js"></script>
 @*<script src="~/Scripts/video.js"></script>*@
 <style>
     #redirect {
@@ -261,6 +229,8 @@
 
             var title = $("#videoTitle").val();
             var url = $("#videoUrl").val();
+            console.log(title);
+            console.log("url");
 
             var subString = url.indexOf("watch?v=") > -1;
             
@@ -282,8 +252,9 @@
                         dataType: 'json',
                         success: function (response) {
                             if (response != null && response.success) {
+                                $("#dialog").hide();
                                 alert('The video has been uploaded');
-                                resetFields();         //kristijan na success da se zatovri formata :) tuka dodadi nekakov javascript. $("#divot).close ?!?
+                                resetFields();        
 
                             } else {
                                 alert(response);

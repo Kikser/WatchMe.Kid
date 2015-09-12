@@ -14,6 +14,7 @@ namespace Watch.Me.Controllers
     public class WatchVideoController : Controller
     {
         private readonly ApplicationDbContext _dbContext = new ApplicationDbContext();
+        int _mostUsedTag;
         // GET: WatchVideo
         public ActionResult Index(int videoId)
         {
@@ -130,6 +131,7 @@ namespace Watch.Me.Controllers
                         }).ToList()
                 }).OrderByDescending(o => o.DateCreate).Take(10).ToList();
             }
+
 
             return PartialView("~/Views/Home/_MultipleVideoesPartialView.cshtml", result);
 
