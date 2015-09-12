@@ -28,18 +28,16 @@
 .web_dialog {
     display: none;
     position: fixed;
-    width: 570px;
+    width: 65%;
     height: 500px;
     top: 25%;
-    left: 50%;
-    margin-left: -290px;
+    left: 22%;
     margin-top: -96px;
     padding: 0px;
     z-index: 102;
     font-family: Verdana;
     font-size: 10pt;
-    overflow-x: hidden;
-    background: linear-gradient(to bottom, rgba(92, 190, 109, 1) 0%,rgba(97, 210, 214, 1) 100%);
+
 
 }
 

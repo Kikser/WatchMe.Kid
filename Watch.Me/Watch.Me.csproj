@@ -239,6 +239,7 @@
     <Content Include="Content\sliderMain.css" />
     <Content Include="Content\subNav.css" />
     <Content Include="Content\uploadContainer.css" />
+    <Content Include="Content\UploadTombola.css" />
     <Content Include="Content\userForm.css" />
     <Content Include="Content\video.css" />
     <Content Include="favicon.ico" />
@@ -300,6 +301,7 @@
     <Content Include="Scripts\subNav.js" />
     <Content Include="Scripts\uploader.js" />
     <Content Include="Scripts\uploadForm.js" />
+    <Content Include="Scripts\UploadTombola.js" />
     <Content Include="Scripts\userForm.js" />
     <Content Include="Scripts\video.js" />
     <Content Include="Scripts\_references.js" />
