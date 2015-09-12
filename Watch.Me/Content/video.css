@@ -32,7 +32,12 @@
     display: block;
     background-color: #bdc3c7;
 }
-
+#likeDislike {
+   width: 10%;
+position: absolute;
+right: 40%;
+top: 118%;
+}
 .video_stuff {
     width: 100%;
     height: 200px;
@@ -76,11 +81,11 @@
 }
 
 .dislike {
-    height: 35px;
+     height: 35px;
     margin: 0 auto;
-    position: relative;
-    left: 40%;
-    top: 12%;
+    position: absolute;
+    left: 75%;
+    top: 18%;
     width: 30%;
     float: left;
 }

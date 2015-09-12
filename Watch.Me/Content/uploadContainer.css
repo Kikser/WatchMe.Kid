@@ -178,14 +178,14 @@ html {
 .btn {
   width: 50px;
   height: 50px;
-  background-color: #B7D750;
+  background-color: #14B190;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
   top: 0;
   bottom: 0;
-  left: 0;
+  left: -40px;
   right: 0;
   margin: auto;
   position: absolute;
@@ -226,7 +226,7 @@ html {
   height: 40px;
   top: 0;
   bottom: 0;
-  left: 0;
+  left: -40px;
   right: 0;
   margin: auto;
   position: absolute;
@@ -271,7 +271,7 @@ html {
   background-color: #fff;
   height: 20px;
   width: 4px;
-  top: 0;
+  top: -8px;
   bottom: 0;
   left: 0;
   right: 0;

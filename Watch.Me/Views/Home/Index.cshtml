@@ -5,7 +5,7 @@
 @model Watch.Me.Models.ViewModels.DisplayedVideosViewModel
 <link href="~/Content/userForm.css" rel="stylesheet" />
 <link href="~/Content/uploadContainer.css" rel="stylesheet" />
-
+<link href="~/Content/UploadTombola.css" rel="stylesheet" />
 <link href="~/Content/video.css" rel="stylesheet" />
 <link href="~/Content/search.css" rel="stylesheet" />
 <link href="~/Content/slider.css" rel="stylesheet" />
@@ -87,7 +87,7 @@
     }
 
 
-</div>
+</div>  
 
 <div id="overlay" class="web_dialog_overlay"></div>
 
@@ -95,47 +95,78 @@
 @if (Model.LoggedUser)
 {
     <div id="dialog" class="web_dialog">
-        <table style="width: 100%; border: 0px;" cellpadding="3" cellspacing="0">
-            <tr>
-                <td class="web_dialog_title align_right">
-                    <a href="#" id="btnClose">Close</a>
-                </td>
-            </tr>
-        </table>
+     
+        <div class="wheel closed">
+            <form id="insertVideo" onsubmit="return false;">
 
-        <form id="insertVideo">
+                <ul id="ul">
+                    <li>
+                        <label class="sent-label">Thank You!</label>
+                        <input placeholder="Hi there! Press Tab..." tabindex="1">
+                    </li>
+                    <li>
+                        <input placeholder="enter title of your video," id="videoTitle" tabindex="2">
+                    </li>
+                    <li>
+                        <input placeholder="next step is..." tabindex="3">
+                    </li>
+                    <li>
+                        <input placeholder="enter video's tag," tabindex="4">
+                    </li>
+                    <li>
+                        <input placeholder="before you finish," tabindex="5">
+                    </li>
+                    <li>
+                        <input placeholder="enter url of the video." tabindex="6">
+                    </li>
+                    <li>
+                        <input placeholder="are you ready???," tabindex="7">
+                    </li>
+                    <li>
+                        <input placeholder="Press Enter to Upload." tabindex="8">
+                    </li>
+                </ul>
 
-            <div>
-                <h2>Title</h2>
-            </div>
-            <div>
-                <input type="text" id="videoTitle" name="videoTitle" style="background-color: white" required>
-            </div>
 
-            <div style="padding-top: 50px;">
-                <h2>Url</h2>
-            </div>
 
-            <div>
-                <input type="text" id="videoUrl" name="videoUrl" style="background-color: white" required>
-            </div>
 
-            <div style="padding-top: 30px;">
-                @foreach (var tag in Model.AvailableTags)
+
+
+
+
+
+
+                <div>
+                    <h2>Title</h2>
+                </div>
+                <div>
+                    <input type="text" id="videoTitle" name="videoTitle" style="background-color: white" required>
+                </div>
+
+                <div style="padding-top: 50px;">
+                    <h2>Url</h2>
+                </div>
+
+                <div>
+                    <input type="text" id="videoUrl" name="videoUrl" style="background-color: white" required>
+                </div>
+
+                <div style="padding-top: 30px;">
+                    @foreach (var tag in Model.AvailableTags)
                 {
-                    <p>
-                        <input type="checkbox" id="@tag.TagId" class="k-checkbox">
-                        <label class="k-checkbox-label" for="@tag.TagId">@tag.TagDescription</label>
-                    </p>
+                        <p>
+                            <input type="checkbox" id="@tag.TagId" class="k-checkbox">
+                            <label class="k-checkbox-label" for="@tag.TagId">@tag.TagDescription</label>
+                        </p>
                 }
-            </div>
+                </div>
 
-            <div style="padding-top: 10px;">
-                <input type="button" id="confirmButton" value="Post the video" />
-            </div>
-        </form>
-
-    </div>
+                <div style="padding-top: 10px;">
+                    <input type="button" id="confirmButton" value="Post the video" />
+                </div>
+            </form>
+</div>
+        </div>
 }
 
 
@@ -206,6 +237,7 @@
 <script src="~/Scripts/userForm.js"></script>
 <script src="~/Scripts/uploadForm.js"></script>
 <script src="~/Scripts/navAnimate.js"></script>
+<script src="~/Scripts/UploadTombola.js"></script>
 @*<script src="~/Scripts/video.js"></script>*@
 <style>
     #redirect {

@@ -1,4 +1,4 @@
-﻿<style>
+﻿
     #redirect {
         width: 30%;
         cursor: pointer;
@@ -52,7 +52,7 @@
   pointer-events: auto;
 }
 
-ul ul {
+.ul ul {
   margin: 0;
   padding: 0;
 }
@@ -313,4 +313,3 @@ ul ul {
   opacity: 0.4;
 }
 
-</style>

@@ -19,7 +19,7 @@ namespace Watch.Me.Controllers
         public ActionResult Index()
         {
             string userId = User.Identity.GetUserId();
-            //bool isAdmin = User.IsInRole("admin");
+            bool isAdmin = User.IsInRole("admin");
 
             ////if logged user is admin it is redirected to admin panel
             //if (!isAdmin)
